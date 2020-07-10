@@ -1,0 +1,28 @@
+﻿<Window x:Class="MosBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MosBot"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="336.5"
+        Closed="Window_Closed"
+        Topmost="True">
+    <StackPanel Margin="15">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Label VerticalAlignment="Center">Состояние:</Label>
+            <TextBlock x:Name="StateTextBox" VerticalAlignment="Center">ожидаю авторизацию</TextBlock>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" x:Name="RadioGroup">
+            <RadioButton>Физическое лицо</RadioButton>
+            <RadioButton IsChecked="True">Предприниматель</RadioButton>
+        </StackPanel>
+        <Button x:Name="StartButton" 
+                Margin="0 15 0 0"
+                Click="StartButton_Click"
+                Width="100" 
+                Content="Старт"
+                Height="40">
+        </Button>
+    </StackPanel>
+</Window>
