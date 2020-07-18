@@ -55,6 +55,8 @@ namespace MosBot
 
         public void Open()
         {
+            var timer = 0;
+
             if (checkForOpen())
                 return;
 
@@ -66,6 +68,16 @@ namespace MosBot
             while (checkForOpen() == false)
             {
                 Thread.Sleep(50);
+                timer += 50;
+
+                if (timer > 1000)
+                {
+                    timer = 0;
+                    handler.Interaction((el) =>
+                    {
+                        el.Click();
+                    });
+                }
             }
 
             bool checkForOpen()

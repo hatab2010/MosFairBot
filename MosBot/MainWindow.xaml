@@ -5,18 +5,106 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MosBot"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="336.5"
+        Title="MainWindow" Height="747" Width="547.167"
         Closed="Window_Closed"
         Topmost="True">
     <StackPanel Margin="15">
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-            <Label VerticalAlignment="Center">Состояние:</Label>
-            <TextBlock x:Name="StateTextBox" VerticalAlignment="Center">ожидаю авторизацию</TextBlock>
+            <Label VerticalAlignment="Center" 
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center">Время старта:</Label>
+            <TextBox x:Name="TimeStartBox"
+                     TextChanged="TimeStartBox_TextChanged"
+                     Width="100"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     PreviewTextInput ="TimeStartBox_PreviewTextInput"></TextBox>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" x:Name="RadioGroup">
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" x:Name="RadioGroup"  Margin="0 10 0 0">
             <RadioButton>Физическое лицо</RadioButton>
-            <RadioButton IsChecked="True">Предприниматель</RadioButton>
+            <RadioButton IsChecked="True" Content="Предприниматель" Margin="10 0 0 0"/>
         </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="110" 
+                   HorizontalContentAlignment="Right"
+                   VerticalContentAlignment="Center">Округ:</Label>
+            <TextBox x:Name="СountyBox" 
+                     Width="370"
+                     VerticalContentAlignment="Center"></TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="110" HorizontalContentAlignment="Right">Район:</Label>
+            <TextBox x:Name="DistrictBox"
+                     Width="370"
+                     RenderTransformOrigin="0.674,-0.654"
+                     VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="111" HorizontalContentAlignment="Right">Группа товаров:</Label>
+            <TextBox x:Name="ProductsBox" 
+                     Width="368"
+                     VerticalContentAlignment="Center">
+            </TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="111" HorizontalContentAlignment="Right">Категории:</Label>
+            <RichTextBox x:Name="CategoryBox" Width="368" Height="96">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="111" HorizontalContentAlignment="Right">Периоды:</Label>
+            <RichTextBox x:Name="PeriodsBox" Width="368" Height="96">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="111" HorizontalContentAlignment="Right">ОГРНИП:</Label>
+            <TextBox x:Name="OGRNIPBox" Width="368"
+                      VerticalContentAlignment="Center">
+            </TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+            <Label VerticalAlignment="Center" Width="111" HorizontalContentAlignment="Right">ИНН:</Label>
+            <TextBox x:Name="INNBox" Width="368"
+                     VerticalContentAlignment="Center">
+            </TextBox>
+        </StackPanel>
+
+        <GroupBox Header="Доверенное лицо">
+            <StackPanel>
+                <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+                    <Label VerticalAlignment="Center" Width="106" HorizontalContentAlignment="Right">Фамилия:</Label>
+                    <TextBox x:Name="SurnameBox" Width="368"
+                             VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+                    <Label VerticalAlignment="Center" Width="106" HorizontalContentAlignment="Right">Имя:</Label>
+                    <TextBox x:Name="FirstnameBox" Width="368"
+                             VerticalContentAlignment="Center">
+                    </TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 0">
+                    <Label VerticalAlignment="Center" Width="106" HorizontalContentAlignment="Right">Отчество:</Label>
+                    <TextBox x:Name="FatherNameBox" Width="368"
+                             VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="left" Orientation="Horizontal" Margin="0 10 0 10">
+                    <Label VerticalAlignment="Center" Width="106" HorizontalContentAlignment="Right">Снилс:</Label>
+                    <TextBox x:Name="SnilsBox" Width="368"
+                             VerticalContentAlignment="Center">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
         <Button x:Name="StartButton" 
                 Margin="0 15 0 0"
                 Click="StartButton_Click"

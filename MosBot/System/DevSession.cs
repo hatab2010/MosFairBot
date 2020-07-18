@@ -2,6 +2,11 @@
 using System.Linq;
 using OpenQA.Selenium.DevTools;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Internal;
+using OpenQA.Selenium.DevTools.Performance;
+using OpenQA.Selenium.DevTools.Debugger;
+using OpenQA.Selenium.DevTools.Console;
 
 namespace MosBot
 {
@@ -39,6 +44,15 @@ namespace MosBot
             devTools = driver as IDevTools;
             session = devTools.CreateDevToolsSession();
             session.Network.Enable(new OpenQA.Selenium.DevTools.Network.EnableCommandSettings());
+
+            session.Network.SetBlockedURLs(new OpenQA.Selenium.DevTools.Network.SetBlockedURLsCommandSettings()
+            {
+                Urls = new string[] {
+                    "https://metrika.mos.ru",
+                    "https://mc.yandex.ru/webvisor/",
+                    "https://www.mos.ru/etp/SioprRest/getPeriod"
+                }
+            });
             blockUrls = new List<string>();            
         }
 

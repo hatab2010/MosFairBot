@@ -4,10 +4,10 @@ using System.Linq;
 using System.Collections.Generic;
 using OpenQA.Selenium.DevTools;
 using MosBot.Elements;
+using System.Threading;
 
 namespace MosBot
 {
-
     public class DinamicElement
     {
         public string XPath { protected set; get; }
@@ -73,6 +73,22 @@ namespace MosBot
                               {
                                   el.Click();
                               });
+
+                        Thread.Sleep(1000);
+                        var js = (IJavaScriptExecutor)Driver;                        
+
+                        js.ExecuteScript("getReference()");
+
+                        //Update data to site
+                        while (true)
+                        {
+                            var ajaxIsComplete = (bool)js.ExecuteScript("return jQuery.active == 0");
+                            if (ajaxIsComplete)
+                                break;
+                            Thread.Sleep(100);
+                        }
+
+                        Thread.Sleep(1000);
                     }
 
                     goto Start;  //Sorry
